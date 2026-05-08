@@ -6,5 +6,7 @@ RUN apt-get install -y python3-flask
 
 COPY . /opt/
 
-RUN python3 /opt/app.py 
+EXPOSE 5000
+
+CMD [ "python3", "/opt/app.py" ]
 
