@@ -10,7 +10,7 @@ pipeline{
         stage('Image build'){
             steps{
                 sh '''
-                    docker build -t flask-app .
+                    docker build -t vatsalsolanki19/flask-app:latest .
                 '''
             }
         }
@@ -36,7 +36,7 @@ pipeline{
         stage('deploy'){
             steps{
                 sh'''
-                    docker run -p 5000:5000 -d flask-app 
+                    docker run -p 5000:5000 -d vatsalsolanki19/flask-app:latest 
                 '''
             }
         }
