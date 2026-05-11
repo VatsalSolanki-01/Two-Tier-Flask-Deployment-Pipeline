@@ -1,18 +1,21 @@
 from flask import Flask, jsonify
 import mysql.connector
+import os
 
 app = Flask(__name__)
 
 def get_db_connection():
+
     return mysql.connector.connect(
-        host="mysql-container",
-        user="root",
-        password="rootvatsal",
-        database="quotesdb"
+        host=os.environ.get("DB_HOST"),
+        user=os.environ.get("DB_USER"),
+        password=os.environ.get("DB_PASSWORD"),
+        database=os.environ.get("DB_NAME")
     )
 
 @app.route("/")
 def home():
+
     return jsonify({
         "message": "Two tier Flask MySQL app running",
         "status": "success"
@@ -20,6 +23,7 @@ def home():
 
 @app.route("/health")
 def health():
+
     return jsonify({
         "status": "healthy"
     })
@@ -103,4 +107,5 @@ def joke():
     })
 
 if __name__ == "__main__":
+
     app.run(host="0.0.0.0", port=5000)

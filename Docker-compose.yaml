@@ -8,11 +8,19 @@ services:
       - 5000:5000
     networks:
       - two-tier-network 
+    environment:
+      DB_HOST: ${DB_HOST}
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+      DB_NAME: ${DB_NAME}
   
-  db: 
+  mysql-container: 
     image: mysql
     ports:
       - 3306:3306
     networks:
       - two-tier-network
+    environment:
+     MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+     MYSQL_DATABASE: ${MYSQL_DATABASE}
 
