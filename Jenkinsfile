@@ -36,7 +36,7 @@ pipeline{
         stage('deploy'){
             steps{
                 sh'''
-                    docker run -p 5000:5000 -d vatsalsolanki19/flask-app:latest 
+                    docker run -d --name flask-app --network two-tier-network -p 5000:5000 vatsalsolanki19/flask-app:latest
                 '''
             }
         }
