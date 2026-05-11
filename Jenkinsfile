@@ -36,7 +36,8 @@ pipeline{
         stage('deploy'){
             steps{
                 sh'''
-                    docker run -d --name flask-app --network two-tier-network -p 5000:5000 vatsalsolanki19/flask-app:latest
+                    docker compose down
+                    docker compose up -d --build
                 '''
             }
         }
