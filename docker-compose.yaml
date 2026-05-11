@@ -25,4 +25,4 @@ services:
      MYSQL_DATABASE: ${MYSQL_DATABASE}
 
 networks:
-  two-tier-network
+  two-tier-network:
